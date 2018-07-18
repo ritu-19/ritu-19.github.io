@@ -270,6 +270,15 @@ nav {
     font-size: 15px;
   }
 }
+.gist {
+   max-width:350px;
+   overflow:auto;
+}
+
+.gist .blob-wrapper.data {
+   max-height:400px;
+   overflow:auto;
+}
 
 .wrapper-footer {
   margin-top: 50px;
