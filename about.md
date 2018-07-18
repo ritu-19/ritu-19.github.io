@@ -10,12 +10,12 @@ I am a software developer currently working in *Advanced Research and Developmen
 
 I am interested in Machine Learning and Distributed Systems. I am passionate about applying my knowledge of Neural Networks and Deep Learning, especially in the field of Computer Vision. Also, I like exploring the applications of deep learning with Natural Language Understanding.
 
-I have completed my undergraduation (Bachelor of Technology) in *Computer Science and Engineering* from National Institue of Technology Warangal (NIT Warangal).
+I have completed my undergraduation (Bachelor of Technology) in *Computer Science and Engineering* from National Institue of Technology,Warangal (NIT Warangal).
 
 Also, I have completed : 
-* Machine Learning Engineer Nanodegree  || Kaggle  || Udacity  [Projects](https://github.com/user-19/ML-Nanodegree-Udacity){:target="_blank"}
-* Computer Vision Nanodegree || Nvidia || Deep Learning Institute ||  Udacity [Projects](https://github.com/user-19/Computer-Vision-Nanodegree-Udacity){:target="_blank"}
-* Big Data Nanodegree || Udacity [Projects](https://github.com/user-19/BigData-Analysis-Nanodegree){:target="_blank"}
+* Machine Learning Engineer Nanodegree by  Kaggle   - Udacity  [Projects](https://github.com/user-19/ML-Nanodegree-Udacity){:target="_blank"}
+* Computer Vision Nanodegree by Nvidia, Deep Learning Institute  - Udacity [Projects](https://github.com/user-19/Computer-Vision-Nanodegree-Udacity){:target="_blank"}
+* Big Data Nanodegree  - Udacity [Projects](https://github.com/user-19/BigData-Analysis-Nanodegree){:target="_blank"}
 
 Along with these, I have completed a couple of courses related to Machine Learning, Neural Networks, Deep Learning, Databases, Big Data Visualization on Coursera too.
 
