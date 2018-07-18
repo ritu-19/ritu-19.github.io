@@ -1,0 +1,14 @@
+<p> <b><u> SMS Spam Classification </b></u> 
+
+<p><i>Project Overview:</i></p>
+<p>The aim of the project is to classify the messages into ‘Spam’ and ‘Ham’ categories.<p> 
+<img src="/images/spam_1.png"></img>
+<p><i>Dataset Used</i><p>
+The dataset used is a set of SMS tagged messages containing one set of SMS messages in English of 5,574 messages, tagged according being ham (legitimate) or spam. The corpus has been collected from <a href = "https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection" > UCI Spam Collection </a>. 
+<p><i> Analysis and Methodology </i></p>
+<p><i> Data Preprocessing: </i> Firstly, I have performed data preprocessing on the given dataset like converting the labels into numerical values (as we all know that machine learning models works well with numbers ). </p>
+<p><i>Feature Extraction: </i> After that, I have performed feature extraction using the <i><b>bag-of-words model</i></b> in scikit-learn. </p>
+<p><i>Naive Bayes Classification Model: </i>After splitting my dataset into training and testing sets and applying the bag-of-words model constructed above on the training set, I have implemented <i><b>Naïve Bayes Classifier ( MultinomialNB )</i></b> for classifying whether a message is a ‘spam’ or a ‘ham’. Finally, I have measured the accuracy of the model using metrics given in scikit module.
+</p>
+
+<p><b><i>Implementation:</b></i> Complete Code can be found <a href="https://github.com/user-19/ML-Nanodegree-Udacity/tree/master/Spam_Classifier">here</a>.</p>
