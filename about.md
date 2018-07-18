@@ -13,9 +13,9 @@ I am interested in Machine Learning and Distributed Systems. I am passionate abo
 I have completed my undergraduation (Bachelor of Technology) in Computer Science and Engineering from National Institue of Technology Warangal (NIT Warangal).
 
 Also, I have completed : 
-* Machine Learning Engineer Nanodegree  | Kaggle  | Udacity  [Projects] (https://github.com/user-19/ML-Nanodegree-Udacity)
-* Computer Vision Nanodegree | Nvidia | Deep Learning Institute |  Udacity [Projects] (https://github.com/user-19/Computer-Vision-Nanodegree-Udacity)
-* Big Data Nanodegree | Udacity [Projects] (https://github.com/user-19/BigData-Analysis-Nanodegree)
+* Machine Learning Engineer Nanodegree  | Kaggle  | Udacity  [Projects](https://github.com/user-19/ML-Nanodegree-Udacity){:target="_blank"}
+* Computer Vision Nanodegree | Nvidia | Deep Learning Institute |  Udacity [Projects](https://github.com/user-19/Computer-Vision-Nanodegree-Udacity){:target="_blank"}
+* Big Data Nanodegree | Udacity [Projects](https://github.com/user-19/BigData-Analysis-Nanodegree){:target="_blank"}
 
 Along with these, I have completed a couple of courses related to Machine Learning, Neural Networks, Deep Learning, Databases, Big Data Visualization on Coursera too.
 
