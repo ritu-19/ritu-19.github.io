@@ -4,7 +4,7 @@ title: IMAGE CLASSIFICATION
 ---
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 <p><i><b>Project Overview:</i></p></b>
-<p> 1.	In this project, images from the CIFAR-10 dataset are classified. The dataset consists of airplanes, dogs, cats, and other objects. The images in the dataset are preprocessed, and then a convolutional neural network is trained on all the samples. The images need to be normalized and the labels need to be one-hot encoded. A convolutional, max pooling, dropout, and fully connected layers is built and then at the end, neural network's predictions on the sample images are examined.
+<p> In this project, images from the CIFAR-10 dataset are classified. The dataset consists of airplanes, dogs, cats, and other objects. The images in the dataset are preprocessed, and then a convolutional neural network is trained on all the samples. The images need to be normalized and the labels need to be one-hot encoded. A convolutional, max pooling, dropout, and fully connected layers is built and then at the end, neural network's predictions on the sample images are examined.
 <img src="/images/image_0.png"></img>
 <p>
 
@@ -13,4 +13,10 @@ title: IMAGE CLASSIFICATION
 
 
 </p>
+<p><b>Dataset Used:</b></p> The dataset used is taken from <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR DATASET</a>. The dataset consists of airplanes, dogs, cats, and other objects.</p>
+<p><b>Methodology</b></p>
+<p><i><b>Data Preprocessing and Exploration:</i></b></p><p> Firstly, the images in the dataset need to be normalized and the corresponding labels need to be one-hot encoded. </p>
+<p><i><b>Building the model:</i></b></p><p> A simple neural network has been built with three convoluional and max pool layers, a flatten layer, three fully connected layers, an output layer. I have added dropout layers too in the model. </p> <p> A single optimization has been donw along with the tuning of some hyperparameters (batch_size, epoch, keep_probability) </p>
+<p><i>Visualizing the softmax predictions</i></p>
+<img src="/images/image_1.png" / >
 <p><b>Implementation:</b></p><p> Complete Code can be found <a href="https://github.com/user-19/ML-Nanodegree-Udacity/tree/master/Image-Classification"> here.</a></p>
