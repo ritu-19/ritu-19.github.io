@@ -1,0 +1,77 @@
+---
+layout: post
+title: SMART CAB
+---
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+<p><i><b>Project Overview:</i></p></b>
+<p> In this project reinforcement learning techniques are applied for a self-driving agent in a simplified world to aid it in effectively reaching its destinations in the allotted time. 
+<img src="/images/cab_0.png"></img>
+<p>
+
+
+
+
+
+</p>
+<p><b>Methodology:</b></p>
+<p>
+Firstly, the environment the agent operates in is investigated by constructing a very basic driving implementation. Once the agent is successful at operating within the environment, then each possible state the agent can be in is identified when considering such things as traffic lights and oncoming traffic at each intersection. With states identified, a Q-Learning algorithm is implemented for the self-driving agent to guide the agent towards its destination within the allotted time. Finally, the Q-Learning algorithm is improved to find the best configuration of learning and exploration factors to ensure the self-driving agent is reaching its destinations with consistently positive results.
+<p>
+<p><b> Basic Driving Agent</p></b>
+<p> First, I have implemented a basic driving agent and visualized the results after performing simulation. </p>
+<img src="/images/image_1.png" />
+<p><i> Certain Observations made:</i></p>
+<p>Following the '10-Trial Rolling relative frequency of bad actions' plot, around 36%-45% of the times, the driving agent is making the bad decisions. Within this, around 20% relative requency is for accidents & violations with around 5% relative frequency for major accidents and around 4% for minor accidents.
+
+    Given the agent is driving randomly,the '10-Trial Rolling Rate of Reliability' plot, shows the rate of reliability between 0%-18% ,that is, the agent reaches its correct destination around 0%-18% of the times. Thus, since the agent is taking random actions everytime, the reliability is supposed to be low only.
+
+    Since around 36%-45% of the times, the driving agent is taking bad decisions, thus, the '10-Trial Rolling Average Reward per Action' plot clearly shows that the actions are getting negative rewards. Also, as the number of trials increases, the rewards for each action are getting more negative. Hence, it is clear that the rewards have been penalized heavily.
+
+    Since, everytime the agent is taking random actions, it's not learning from the previous trials, thus the outcome of results does not change significantly.
+
+    The Safety & Reliability Ratings obtained are 'F' each. Hence it is obvious that SmartCab is not considered as both safe and reliable for its passengers. This is because the agent is taking random actions everytime, it is not learning from the trials.
+</p>
+<p><b> Creating an optimized Q-Learning Driving Agent:</p></b>
+<p>I have created an optimized Q-learning driving agent by defining a set of states that the agent can occupy in the environment. Depending on the input, sensory data, and additional variables available to the driving agent, a set of states can be defined for the agent so that it can eventually learn what action it should take when occupying a state. The condition of 'if state then action' for each state is called a policy, and is ultimately what the driving agent is expected to learn. Without defining states, the driving agent would never understand which action is most optimal -- or even what environmental variables and conditions it cares about!</p>
+<p><i> Features that are most relevant for learing safety and reliability: </p>
+<p>However, all the available features {'waypoint', 'light' , 'left', 'right', 'oncoming', ' deadline' } play an important role in determining the safety and reliability of SmartCab, but if more 'reliability'is needed, then 'deadline' and 'waypoint' should be given more importance than other features because these features will determine the direction leading to the destination without taking care of safety and hence 'safety' would be inefficient and for 'safety', I think, 'oncoming', 'left', 'right' would be more important because these features will determine taking a right decision at every step without making violations and ultimately, reaching the destination.
+
+Also, according to me, the most relevent ones are waypoint, light, left and oncoming. The 'deadline' feature is not that much appropriate because knowing the number of steps left to reach the destination would not help much in improving the Safety and Reliability Ratings.
+
+Also, the 'right' feature is not that important because the intended direction of travel for a vehicle to the Smartcab's right would not help in much learning from the trials. While on the other hand, the 'left' and 'oncoming' features are important because if a vehicle is present to the smartcab's left,then its intended direction of travel can help the smartcab learn to take certain actions in different directions.</p>
+<p><b> Q-Learning without Optimization :</p></b>
+<img src="/images/image_2.png" />
+<p>
+
+    The initial Rate of reliability, initial reward per action and the initial relative frequency of bad decisions are alomst same (although not completely equal) for both the basic driving agent and the defaukt Q-Learning agent.
+
+    Around 20 trials are required before testing. Given the default epsilon-tolerance (0.05) and since the decay function is linear (epsilon = epsilon - 0.05; decay of 0.05) , it takes around 20 trials in order to converge to epsilon-tolerance.
+
+    Yes, it is represented in the 'Parameter-Value Vs Trial' Plot . The plot clearly shows that the exploration factor (blue line in the plot) drops linearly from 1.0(initial epsilon value) to 0.0(~0.05(tolerance)) {decay value is 0.05} . Mathematically, 0.05 (decay factor) * 20 (No of trials) = 1.0. Hence, it takes 20 trials to converge to tolerance before testing.
+
+    Yes, the '10-Trial Rolling relative frequency of bad actions' plot clearly shows that the number of bad actions decreases as the number of trials increases( from 30% to 10%). Also, the '10-Trial Rolling Average Reward per Action' plot shows the average reward increases per action. This is because, now the agent is learning from the trials and thus, the number of bad decisions made are lesse and hence the average reward per action has also increased.
+
+    The safety and Reliabilty Ratings have now been improved to 'D' and 'B' respectively.
+</p>
+
+<p><b> Q-Learning Algorithm with Optimization: </p></b>
+<img src="/images/image_3.pmg" />
+<p>
+
+    I used the 'cosine' decaying function {self.epsilon = math.cos(self.t * 0.007) ; where self.t: number of trials} .
+
+    Approximately, 225 training trials are needed for the agent before beginning testing.
+
+    I used the epsilon-tolerance : 0.01 so that the agent can perform a sufficient number of trials before the testing starts and alpha (learning rate) as 0.65 ( have not taken either very big value or very small value ). As the alpha determines the magnitude of step that is taken towards reaching the deadline; thus, if a very small value is chosen, it may take a long time to reach the deadline or if a large value is taken, though it'll learn at a faster rate but then there will be a high of probability of oscillating continously around the final destination only. Hence, chose alpha = 0.65.
+
+    A lot of improvement has been seen ; rate of reliability has increased to almost 100%. Also, the relative frequency of bad decisions taken by the agent has ultimately converged to almost 0.0.
+
+    Yes, the Q-Learner results clearly show that the driving agent has successfully learned an appropriate policy.
+
+    Both the Safety and Reliability ratings of the SmartCab obtained are 'A+' which is satisfactory.
+</p>
+
+<p><b> Defining an Optimal Policy: </b></p><p>In the given environment, the optimal policy would be to reach the destination safely while avoiding any violations and accidents (No clashes with other vehicles)</p>
+
+<p><b>Implementation:</b></p><p> Complete Code can be found <a href="https://github.com/user-19/ML-Nanodegree-Udacity/tree/master/smartcab">here.</a></p>
+</p>
