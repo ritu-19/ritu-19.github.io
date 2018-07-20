@@ -19,7 +19,7 @@ Firstly, the environment the agent operates in is investigated by constructing a
 <p>
 <p><b> Basic Driving Agent</p></b>
 <p> First, I have implemented a basic driving agent and visualized the results after performing simulation. </p>
-<img src="/images/image_1.png" />
+<img src="/images/cab_1.png" />
 <p><i> Certain Observations made:</i></p>
 <p>Following the '10-Trial Rolling relative frequency of bad actions' plot, around 36%-45% of the times, the driving agent is making the bad decisions. Within this, around 20% relative requency is for accidents & violations with around 5% relative frequency for major accidents and around 4% for minor accidents.
 
@@ -40,7 +40,7 @@ Also, according to me, the most relevent ones are waypoint, light, left and onco
 
 Also, the 'right' feature is not that important because the intended direction of travel for a vehicle to the Smartcab's right would not help in much learning from the trials. While on the other hand, the 'left' and 'oncoming' features are important because if a vehicle is present to the smartcab's left,then its intended direction of travel can help the smartcab learn to take certain actions in different directions.</p>
 <p><b> Q-Learning without Optimization :</p></b>
-<img src="/images/image_2.png" />
+<img src="/images/cab_2.png" />
 <p>
 
     The initial Rate of reliability, initial reward per action and the initial relative frequency of bad decisions are alomst same (although not completely equal) for both the basic driving agent and the defaukt Q-Learning agent.
@@ -55,7 +55,7 @@ Also, the 'right' feature is not that important because the intended direction o
 </p>
 
 <p><b> Q-Learning Algorithm with Optimization: </p></b>
-<img src="/images/image_3.png" />
+<img src="/images/cab_3.png" />
 <p>
 
     I used the 'cosine' decaying function {self.epsilon = math.cos(self.t * 0.007) ; where self.t: number of trials} .
