@@ -15,9 +15,45 @@ title: CUSTOMER SEGMENTS
 
 </p>
 
-<p><b>Dataset Used</b</p> <p> The dataset used is taken from UCI ML Repositry <a href="https://archive.ics.uci.edu/ml/datasets/Wholesale+customers">UCI wholeshale Dataset</a>. The dataset contains features (Fresh,Milk,Grocery,Frozen,Detergents_Paper,Delicatessen (Continuous); Channel,Region(Nominal)).
+<p><b>Dataset Used</b></p> <p> The dataset used is taken from UCI ML Repositry <a href="https://archive.ics.uci.edu/ml/datasets/Wholesale+customers">UCI wholeshale Dataset</a>. The dataset contains features (Fresh,Milk,Grocery,Frozen,Detergents_Paper,Delicatessen (Continuous); Channel,Region(Nominal)).
   </p>
   <p><b>Approach and Methodology</b></p>
   <p>1.	Firstly, the data is explored by selecting a small subset to sample and determine if any product categories highly correlate with one another. Afterwards, the data is preprocessed by scaling each product category and then identifying (and removing) unwanted outliers. With the good, clean customer spending data, PCA transformations are applied to the data and clustering algorithms are implemented to segment the transformed customer data. Finally, the segmentation found is compared with an additional labelling and certain ways are considered that this information could assist the wholesale distributor with future service changes.
   </p>
+  <p><b>Visualizing Feature Distribution</b></p>
+  <img src="/images/customer_1.png" />
+  <img src="/images/customer_2.png"   />
+  <p><i>Observations:</p></i><p>The data is not normally distributed, It's more like logarithmic in nature. Observing the correlations, it seems that the features 'Detergents_Paper' and 'Grocery' are highly correlated and similarly then, 'Grocery'and 'Milk' are also highly correlated and then 'Detergents_Paper' and 'Milk' are correlated with a correlation factor of ~0.66. Hence, it is clear that 'Grocery' feature is not that relevant. It can be removed also.</p>
+
+<p><b><i>PCA Implementation and Observations</i></p></b>
+<img src="/images/customer_3.png" />
+<p> Variance in the data when only the outliers occuring in the multiple features are removed:
+
+    Variance in total by the first and second Component : 0.7068 (~70.68%)
+    Variance in total by first four principal Components : 0.9311 (~93.11%) 3.Using the visualisation provided above: -> In the first component, 'Detergents_Paper' , 'Grocery'and 'Milk' features are weighted the highest. The customer is more likely to be a local retailer. -> In the second component, 'Fresh' , 'Frozen' and 'Delicatessen' are weighted the heighest. The customer is most likely to be deli/cafe/corner-store . -> In the third component, 'Delicatessen' is highly positively weighted and ' Fresh' is highly negatively weighted. Hence, it best represents the food items sold by deli and food items spent daily; highlights the difference between the two. It also captures the negative impact of 'Fresh' on the customer sales and large positive impact of the 'Delicatessen' feature. It also suggests that the two features {'Fresh', 'Delicatessen'} are lacking in correlation. -> In the fourth component, 'Frozen' is highly positively weighted and 'Delicatessen' is highly negatively weighted. Like the above component, there is lack of correlation between the two components {'Frozen', 'Delicatessen'}. Also, it captures the negative impact of 'Delicatessen' and the positive impact of 'Frozen' on the customer sales.
+</p>
+<p><b>Clustering </b><p>
+<p><i> Visualizing the biplot</i></p>
+<img src="/images/customer_4.png" />
+<p> I have used K-Means for Clustering.</p>
+<p>K-Means algorithm, assumes that a particular data point belongs to a particular cluster (i.e, it assumes a kind of certainty of belonging of a data point to a cluster). It doesnot take into account the fact that there can be some probability of that data-point to belong to another cluster. However, the Gaussian Mixture Model(GMM) keeps this factor of uncertainty into account while assigning the clusters to the data points. It assigns the probability of belonging to a particular cluster to a data-point. Hence, GMM , unlike K-Means (which assumes clusters to be spherical), doesnot do hard assigments of clusters to data points initially.
+
+Advantages of K-Means Clustering Algorithm: -> Simple and easy to undertand and implement -> Initial assigment of data-points to the clusters is very easy -> Works pretty well in case of linear data or well distributed data -> Computationally faster (epecially when 'k': number of clusters are very small)
+
+Advantages of Gaussian Mixture Model Clustering Algorithm: -> More flexible in initial assignment of the datapoints to the clusters; no hard assignment -> Since, it doesnot ignore the notion of uncertainty, hence will give more accurate results in case of non-linear data and high-dimensional data
+
+Since the wholesale customer data seems to be not so well distributed. There may be a case when a particular data point may belong to two clusters. Hence I'll go for applying Gaussian Mixture Model to our dataset to obtain more accurate results.
+</p>
+<p><b><i> Visualizing the clusters</i></b></p>
+<img src="/images/customer_5.png" />
+<img src="/images/customer_6.png" />
+
+<p><b>Conclusion </b></p>
+<p>Using the customer segments obtained above using clustering, the wholesaler distributer will be able to make some hypothesis regarding the types,demands etc. of customers prior to perform any test like A/B test in order to determine whether making a change will affect its customers positively or not.
+
+For instance, in our case, we divided our data into two segments using GMM clustering methods and looking at the stats obtained above, it is pretty clear that the first segment is more likely to be a cafe/deli/corner-store which is primarliy more concerned about the selling the fresh items. On the other hand, the second segment best represents a retailer/super-market which is mot much concerned about selling the fresh items; instead they ought to sell frozen items.
+
+Now taking the scenerio in which the delivery service has been changed from 5days a week to 3 days a week. Now, since the first customer segment is much concerned about making only the fresh items available to their customers, thus if the delivery service if reduced then most of the food'll be wasted and hence will affect the establishment in a negative way. On the other hand, the second customer segment is not much concerned about the freshness of the items being delivered to the customers. Hence, even if the delivery service is reduced to 3 days a week, the establishment will not get affected since the establishment (retailer/super-market) can later sell the stored food items.</p>
+<p>While using any supervised learning algorithm like logistic regression, K-NN, decision tree regressor, SVC etc., the wholesale customer can keep the segments obtained above (Segment 1 , Segment 0 ) using GMM clustering algorithm as the target variables and the different kinds of purchases as the features/independent variables. After training the data with the segments obtained above as the target variables, not only the domain knowledge will increase and hence the performance of the model but also whenever a new customer will come, the wholesale distributor will be able to predict easily in which segment the new segment falls and simultaneously will be able to make some prior hypothesis about the customer beforehand only. Hence, in a way, will be good for the wholesale distributor with the business perspective.</p>
+<p>The clustering algorithm used (Gaussian Mixture Model) and the number of clusters chosen (2) worked pretty well in determining the distribution of Cafe/Deli/Corner-Store to Retailer/Super-Marlet customers. In the above plot, the green dots represents the retailer and the red ones denote the cafe. So, yes, there are customer segments that would be classified as purely 'Retailers' or 'Cafe/Deli' using the above distribution.</p>
   <p><b>Implementation:</p></b> Complete Code can be found <a href="https://github.com/user-19/ML-Nanodegree-Udacity/tree/master/customer_segments"> here</a>.
