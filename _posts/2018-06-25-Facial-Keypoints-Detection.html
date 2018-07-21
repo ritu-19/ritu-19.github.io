@@ -1,0 +1,48 @@
+---
+layout: post
+title: FACIAL KEYPOINTS DETECTION
+---
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+<p><i><b>Project Overview:</i></p></b>
+<p>In this project, the knowledge of computer vision techniques and deep learning architectures is combined to build a facial keypoint detection system (identifying 68 facial keypoints). Facial keypoints include points around the eyes, nose, and mouth on a face and are used in many applications : facial tracking, facial pose recognition, facial filters, and emotion recognition. 
+<p>In This project a convolutional neural network is trained to perform facial keypoint detection, and  computer vision techniques are used to transform images of faces.</p>
+<img src="/images/facial_0.png"></img>
+
+<p> 
+
+
+
+</p>
+<p><b> Dataset Used:</p></b><p> The dataset is taken from <a href="https://www.cs.tau.ac.il/~wolf/ytfaces/"> YouTube Faces Dataset</a></p><p>This facial keypoints dataset consists of 5770 color images. All of these images are separated into either a training or a test set of data.
+
+    3462 of these images are training images (used to create a model to predict keypoints)
+    2308 are test images(used to test the accuracy of your model)
+</p>
+<p><b>Data Preprocessing: </b></p> <p>Firstly, all the images are standardized, normalized, rescaled to a desired size, cropped and are converted to Tensor (converting numpy images to torch images) using pytorch library.</p>
+<p><b> Network Architecture: </b></p> <p> The defined network goes this way : </p>
+<p>(conv1): Conv2d(1, 32, kernel_size=(4, 4), stride=(1, 1))      ##Convolutional Layer
+  (conv2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))  ##Convolutional Layer
+  (conv3): Conv2d(64, 128, kernel_size=(2, 2), stride=(1, 1)) ##Convolutional Layer
+  (conv4): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))  ##Convolutional Layer
+  (pool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)  ## Max Pooling Layer
+  (fcl1): Linear(in_features=6400, out_features=1000, bias=True)  ## Fully Connected Layer
+  (fcl2): Linear(in_features=1000, out_features=500, bias=True) ## Fully Connected Layer
+  (fcl3): Linear(in_features=500, out_features=136, bias=True)  ## Fully Connected Layer
+  (dropout1): Dropout(p=0.1)  ## DropOut Layer
+  (dropout2): Dropout(p=0.2)  ## DropOut Layer
+  (dropout3): Dropout(p=0.3)  ## DropOut Layer
+  (dropout4): Dropout(p=0.4)  ## DropOut Layer
+  (dropout5): Dropout(p=0.5)  ## DropOut Layer
+  (dropout6): Dropout(p=0.6)  ## DropOut Layer
+  </p>
+  <p>I trained my model along with loss tracking. </p>
+  </p>
+  
+  <p><b> Prediction </p></b>: <p> After training the model , I have detected faces from the images using <b> Haar Cascade Classifier</b> </p>
+  
+  <img src="/images/facial_1.png" />
+  
+  <p> Then , I used my pretrained model to predict the keypoints as shown below: </p>
+  <img src="/images/facial_2.png" />
+
+<p><b>Implementation:</p></b><p> Complete Code can be found <a href="https://github.com/user-19/Computer-Vision-Nanodegree-Udacity/tree/master/P1_Facial_Keypoints">here.</a></p>
