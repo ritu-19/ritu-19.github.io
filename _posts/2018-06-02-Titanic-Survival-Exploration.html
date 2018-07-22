@@ -3,7 +3,7 @@ layout: post
 title: TITANIC SURVIVAL EXPLORATION
 ---
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-<p><i><b>Project Overview:</i></p></b>
+<p><b>Project Overview:</p></b>
 <p>This project is aimed at creating decision functions that attempt to predict survival outcomes from the 1912 Titanic disaster based on each passenger's features. Basically, a subset of the RMS Titanic passenger manifest is explored to determine which features best predict whether someone survived or did not survive. </p>
 <p>
 
@@ -33,7 +33,7 @@ title: TITANIC SURVIVAL EXPLORATION
   
 </p>
 
-<p><i><b>Dataset Used</i><p></b>
+<p><b>Dataset Used<p></b>
 <p>The dataset used in this project has:</p>
   <p> <ul>
    <li>Features:</li></p>
@@ -45,30 +45,30 @@ title: TITANIC SURVIVAL EXPLORATION
 </ul>
 </p>
 
-<p><i><b> Approach, Methodology and Conclusion </p></i></b>
-<p>The technique applied in this project is a manual implementation of a simple machine learning model (a supervised learning), <a href = "https://en.wikipedia.org/wiki/Decision_tree_learning"><i>the decision tree<i></a> .</p> 
+<p><b> Approach, Methodology and Conclusion </p></b>
+<p>The technique applied in this project is a manual implementation of a simple machine learning model (a supervised learning), <a href = "https://en.wikipedia.org/wiki/Decision_tree_learning"><i>the decision tree</i></a> .</p> 
   
-  <p><i> A small introduction about Decision Trees: </i> A decision tree splits a set of data into smaller and smaller groups (called nodes), by one feature at a time. Each time a subset of the data is split, the predictions become more accurate if each of the resulting subgroups contain similar labels. </p>
+  <p><i><b> A small introduction about Decision Trees:</b> </i></p><p> A decision tree splits a set of data into smaller and smaller groups (called nodes), by one feature at a time. Each time a subset of the data is split, the predictions become more accurate if each of the resulting subgroups contain similar labels. </p>
 
-  <p><i><b>Model:</p></i></b>
-  
-<p>Firstly, I constructed the model without the consideration of any feature i.e., the model always makes a prediction of 0 (i.e. not survived).Hence, the accuracy achieved is quite low : 61.62%. </p>
+  <p><b>Model:</p></b>
+  <ul>
+<p><li>Firstly, I constructed the model without the consideration of any feature i.e., the model always makes a prediction of 0 (i.e. not survived).Hence, the accuracy achieved is quite low : 61.62%. </p></li>
 
-<p> After that, I examined the survival statistics considering each of the features one by one. </p> <p> Some of the visualizations are shown below:</p>
+<p> <li>After that, I examined the survival statistics considering each of the features one by one. </p> <p> Some of the visualizations are shown below:</p><li>
 
 <img src="/images/titanic_1.png" />
 
-<p> The above visualisation about  the survival statistics vs 'Sex'feature clearly shows that a large majority of males did not survive the ship sinking. However, a majority of females did survive the ship sinking. Thus, following this observation, I build the prediction that if a passenger was female, then prediction should be 'survived'. Otherwise, the passenger did not survive.</p>
+<p><li> The above visualisation about  the survival statistics vs 'Sex'feature clearly shows that a large majority of males did not survive the ship sinking. However, a majority of females did survive the ship sinking. Thus, following this observation, I build the prediction that if a passenger was female, then prediction should be 'survived'. Otherwise, the passenger did not survive.</p></li>
 
-<p> The model constructed with the consideration of 'Sex' {male, female} feature.Hence, the accuracy achieved is considerably better : 78.68%. </p>
+<p><li> The model constructed with the consideration of 'Sex' {male, female} feature.Hence, the accuracy achieved is considerably better : 78.68%. </p></li>
 
 <img src="/images/titanic_4.png" / >
-<p> Similarly, the above visualization about the survival statistics vs 'Age' Feature, clearly shows the majority of males younger than 10 survived the ship sinking, whereas most males age 10 or older did not survive the ship sinking. Thus, following this I build my prediction as: If a passenger was female, then we will predict they survive. If a passenger was male and younger than 10, then only the prediction should be survived. </p>
+<p> <li>Similarly, the above visualization about the survival statistics vs 'Age' Feature, clearly shows the majority of males younger than 10 survived the ship sinking, whereas most males age 10 or older did not survive the ship sinking. Thus, following this I build my prediction as: If a passenger was female, then we will predict they survive. If a passenger was male and younger than 10, then only the prediction should be survived. </p></li>
 
-<p>The model constructed with the consideration of 'Age' and 'Sex' feature gives the accuracy of 79.35%; which is better. </p>
+<p><li>The model constructed with the consideration of 'Age' and 'Sex' feature gives the accuracy of 79.35%; which is better. </p> <li>
 
-<p> Similarly, I tried examining the survival statistics with the consideration of several other features and simultaneously, kept on adding the features to my model, This way, finally I was able to achieve ~82% which is pretty good. </p>
-
+<p> <li>Similarly, I tried examining the survival statistics with the consideration of several other features and simultaneously, kept on adding the features to my model, This way, <b>finally I was able to achieve ~82% which is pretty good </b>. </li></p>
+</ul>
 <p><b><i>Implementation: </i></b> Complete code can be found <a href="https://github.com/user-19/ML-Nanodegree-Udacity/tree/master/titanic_survival_exploration">here.</a>
  
 
