@@ -3,10 +3,11 @@ layout: post
 title: HOUSE PRICE PREDICTION
 ---
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-<p><i><b>Project Overview:</i></p></b>
+<p><b>Project Overview:</p></b>
 <p>The main of the project is to apply basic machine learning concepts on the data collected for housing prices in the Boston, to predict the selling price of a new home.<p> 
 <img src="/images/housing_0.png" / > 
- 
+<p>Image Source: [<a href = "http://google.com/" > Google </a>]</p>
+  
  <p>
   
   
@@ -24,21 +25,25 @@ title: HOUSE PRICE PREDICTION
 </p>
 <li>Target Variable</li> <p>1. MEDV: median value of owner-occupied homes</p>
 </ul></p>
-<p><b><i> Analysis and Methodology </i></p></b>
 
-<p><b><i>Data Exploration: </b></i></p><p>First, Data Exploration is done to obtain important features and descriptive statistics about the dataset. </p>
-<p>Second, Splitting the data into testing and training subsets, and determine a suitable performance metric for this problem. 
+<p><b>Data Exploration: </b></p>
+<ul>
+<li><p>First, dataset is explored and visualized to obtain important features and descriptive statistics about the dataset. </p></li>
+<li><p>Second, I have Splitted the dataset into testing and training subsets, and have determined a suitable performance metric for solving this problem. 
+ </p></li>
+<p> <li>During data exploration, I observed the Statistics of the training and testing dataset such as, Maximum, Minimum, standard deviation etc price of the data.</p></li>
+<li> I have used <b> r2_score </b> for measuring the performance. </li>
+
+<p><b>Building Model, Analyzing and Visualizing: </b></p><p>I have analyzed and visualized the performance graphs for a learning algorithm with varying parameters and training set sizes. 
 </p>
-<p> During data exploration, I observed the Statistics of the training and testing dataset such as, Maximum, Minimum, standard deviation etc price of the data. And I have used r2_score for measuring the performance. </p>
-<p><b><i>Building Model, Analyzing and Visualizing: </b></i></p><p>Third, Analyzing and Visualizing the performance graphs for a learning algorithm with varying parameters and training set sizes. 
-</p>
-<p> I used Decision Tree as my model and has used GridSearchCV for tuning the hyperparameters.</p>
+<p><b> Decision Tree And GridSearchCV: </b></p>
+<p> I used <b>Decision Tree</b> as my model and has used <b>GridSearchCV</b> for tuning the hyperparameters. And hence <b> An Optimal Model is being picked.</b></p> 
+
 <img src="/images/housing_1.png" />
 <p>The above figure shows the Decision Tree Learning Performances.</p>
 <img src="/images/housing_2.png" / >
 <p>The above image shows the Decision Tree Regressor Complexity Performance.</p>
-<p><i><b>Optimal Model: </i></b></p><p>Fourth, Picking the optimal model. </p>
 
-<p><b><i> Testing / Prediction Accuracy: </b></i></p><p>Fifth, Finally, Testing the optimal model on a new sample and compare the predicted selling price to your statistics.</p>
+<p><b> Testing / Prediction Accuracy: </b></p><p>I have tested the optimal model on a new sample and compare the predicted selling price to the obtained statistics.</p>
 
 <p><b><i>Implementation:</b></i> Complete Code can be found <a href="https://github.com/user-19/House-Price-Prediction">here</a>.</p>
