@@ -3,7 +3,27 @@ layout: post
 title: NYC SUBWAY DATA ANALYSIS
 ---
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-<p><i><b>Project Overview:</i></p></b>
-<p> In this project, NYC Subway Data is analyzed to find out whether more people ride the subway when it’s raining versus when it’s not. New York City Subway data is compared and statistical methods and data visualization techniques are used to draw an interesting conclusion about the subway with the dataset that is analyzed.<p> 
-<img src="/images/nyc_0.png"></img>
+<p><b>Project Overview:</p></b>
+<p> The aim of this project is to analyze the NYC Subway Data to find out whether more people ride the subway when it’s raining versus when it’s not. </p>
+<p>New York City Subway data is compared and statistical methods and data visualization techniques are used to draw an interesting conclusion about the subway with the dataset that is analyzed.</p> 
+<p> The primary goal of this project is to explore the relationship between data from the NYC Subway turnstiles and the city weather.</p>
+<img src="/images/nyc_0.png" align="middle"></img>
+<p>Image Source: [<a href="http://google.com/"> Google </a>] </p>
+<p><b> Methodology: </p></b>
+<ul>
+  <li>  <b> Gathering data from the Internet and Filtering the data </b>: Firstly, I have gathered some required data from Internet using <b> urllib</b> and <b> Beautiful Soup</b> libraries. Then I have loaded the data into <b>Dataframes</b> and performed some filter operations. </li>
+  <li>    <b>Using Statistics for Data Analysis:</b>Further I have analyzed the dataset by performing certain queries such as:</li>
+  <ul>
+    <li> Counting the number of days when it 'rains' i.e., in the dataset, 'rain' column = 1</li>
+    <li> Calculating if the day was cloudy or not (0 or 1) and the maximum temperature for cloudy days </li>
+    <li> Calculating the mean temperatures for the weekends </li>
+    <li>Calculating the mean of the minimum temperature  for the days when the minimum temperature was greater that 55 degrees</li>
+  </ul>
+  <li><b>Data handling and simple graphics creation with Pandas:</b> Then I have visualized the data by plotting them using histograms.</li>
+<p> For example, the below histogram is plotted to analyze the days when it is raining and when it is not.</p>
+  <img src = "/images/nyc_0.png" />
+</ul>
+
+<p><b>Map and Reduce: </b></p> Further, I have created a Mapper and a Reducer for this <a href="https://s3.amazonaws.com/content.udacity-data.com/courses/ud359/turnstile_data_master_with_weather.csv" > dataset </a> with 'UNIT' column as 'key' ans analyzed the results. </p>
 <p><b>Implementation</b></p><p>Complete Code can be found <a href="https://github.com/user-19/BigData-Analysis-Nanodegree/tree/master/NYC_Subway">here.</a></p>
+<p> <i>Happy Learning !!</p></i>
