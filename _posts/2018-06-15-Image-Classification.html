@@ -15,7 +15,8 @@ title: IMAGE CLASSIFICATION
 
 
 </p>
-<p><b>Dataset Used:</b></p> The dataset used is taken from <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10 DATASET</a>. The dataset consists of airplanes, dogs, cats, and other objects.</p>
+<p><b>Dataset Used:</b></p> The dataset used is taken from <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10 DATASET</a>. The dataset consists of airplanes, dogs, cats, and other objects.The dataset is broken into five batches to prevent the machine from running out of memory. The different labels in the dataset are airplane, automobile , bird, cat, deer, dog, frog, horse, ship, truck.
+</p>
 <p><b>Methodology</b></p>
 <p><i><b>Data Preprocessing and Exploration:</i></b></p><p> Firstly, the images in the dataset need to be normalized and the corresponding labels need to be one-hot encoded. </p>
 <p><i><b>Building the model:</i></b></p><p> A simple neural network has been built with three convoluional and max pool layers, a flatten layer, three fully connected layers, an output layer. I have added dropout layers too in the model. </p> <p> A single optimization has been donw along with the tuning of some hyperparameters (batch_size, epoch, keep_probability) </p>
