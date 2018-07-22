@@ -3,10 +3,11 @@ layout: post
 title: FINDING CHARITY DONOR
 ---
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-<p><i><b>Project Overview:</i></p></b>
+<p><b>Project Overview:</p></b>
 <p>This project is aimed at performing analysis and developing certain supervised learning techniques on the data collected for the U.S. census to help a certain organisation identify people most likely to sonate to their cause.  </p>
 <p>
 <img src="/images/donor_0.png" />
+<p>Image Source: [<a href="http://google.com/" > Google</a>]</p>
 
 <p>
 
@@ -15,29 +16,38 @@ title: FINDING CHARITY DONOR
 </p>
 <p>
 <p><b><i> Dataset Used: </i></b></p>
-<p>The dataset used is collected from <a href ="https://archive.ics.uci.edu/ml/datasets/Census+Income">UCI ML Repository</a></p>. The dataset contains features (age, workclass, education_level,education-num,marital-status,occupation,    relationship,race,sex,capital-gain,capital-loss,hours-per-week,native-country) and a target variable (income) which is to be predicted.</p>
-<p><b><i>Analysis and Methodology </i></b></p>
+<p>The dataset used is collected from <a href ="https://archive.ics.uci.edu/ml/datasets/Census+Income">UCI ML Repository</a></p>. <p>The dataset contains features (age, workclass, education_level,education-num,marital-status,occupation,    relationship,race,sex,capital-gain,capital-loss,hours-per-week,native-country) and a target variable (income) which is to be predicted.</p>
+<p><b>Analysis and Methodology: </b></p>
 <p>
-Firstly, the data is explored to learn how the census data is recorded. Next, a series of transformations and preprocessing techniques are applied on the dataset to manipulate the data into a workable format. After that several supervised learners are evaluated on the data, and the one which is best suited for the solution is selected. Afterwards, the model selected is optimized and present it as your solution to CharityML. Finally, the chosen model and its predictions are explored under the hood, to see just how well it's performing when considering the data it's given.
+       <ul>
+              <li>Firstly, the data is explored to learn how the census data is recorded. </li>
+              <li> Next, a series of transformations and preprocessing techniques are applied on the dataset to manipulate the data into a workable format. </li>
+              <li>After that several supervised learners are evaluated on the data, and the one which is best suited for the solution is selected. </li>
+              <li>Afterwards, the model selected is optimized and present it as your solution to CharityML. </li>
+              <li>Finally, the chosen model and its predictions are explored under the hood, to see just how well it's performing when considering the data it's given.</li>
+</ul>
 </p>
-<p><b><i>Performance Metrics of different algorithms</p></i></b>
+<p><b>Performance Metrics of different algorithms:</p></b>
 <img src="/images/donor_2.png" />
 
-<p><i> Observations </i></p>
-<p> Some observations made after looking at the above graphs are : The training and prediction time is least for Logistic Regression and is the maximum for Random Forest. However, the difference between the training/prediction time for Logisitic Regression and Decision Trees is not too much. And the accuracy/F score for all three learning algorithms is almost same in case of Testing Set. But there is a huge difference in the accuracy/F Score between the Logistic Regression and RandomForest/Decision Tree Algorithm in case of Training Set. 
+<p><b> Observations made: </b></p>
+<p>The training and prediction time is least for Logistic Regression and is the maximum for Random Forest. However, the difference between the training/prediction time for Logisitic Regression and Decision Trees is not too much. And the accuracy/F score for all three learning algorithms is almost same in case of Testing Set. But there is a huge difference in the accuracy/F Score between the Logistic Regression and RandomForest/Decision Tree Algorithm in case of Training Set. 
+</p>
+<p>
+       Hence, looking at the above mentioned criterias, <b>Logisitic Regression is the best learning algorithm to use for this dataset </b>because:</p>
+       <ul>
+              <li>Training/Prediction Time is the least</li>
+       <li> Despite being having least accuracy/F score on training set, it gives the highest accuracy/F score on testing Set. So least chances of overfitting. Whereas, in case of Decision/RandomForest, there are high chances of overfitting (very high accuracy/F score on training set)</li>
+               <li> The algorithm is fit to our dataset because :<ul> <li> The target variables are categorical (binary) in nature </li> <li>Less prone to Overfitting </li> <li> Comfortable with the datasize too.</li></li>
+</ul>
 
-       Hence, looking at the above mentioned criterias, Logisitic Regression is the best learning algorithm to use for this dataset because:
-       -> Training/Prediction Time is the least
-       -> Despite being having least accuracy/F score on training set, it gives the highest accuracy/F score on testing Set. So least chances of overfitting. Whereas, in case of Decision/RandomForest, there are high chances of overfitting (very high accuracy/F score on training set)
-               -> The algorithm is fit to our dataset because : 1. The target variables are categorical (binary) in nature 2. Less prone to Overfitting 3. Comfortable with the datasize too.</p>
-
-
-<p><b><i> Features Extraction </p></b></i>
+<p><b> Features Extraction: </p></b>
 <img src="/images/donor_3.png" />
-<p><i> Observations</p></i>
-<p>The parameters which I believe to be most important for predictions based on my observations (age, capital_gain, capital_loss, hours_per_week, education_level) are somewhat same as the most relevant features extracted using 'AdaBoostClassifier'. The 'AdaBoostClassifier' predicts 'education_num' to be a more relevant feature than 'education_level' which I feel is fine because on observing the dataset again , I found that 'education_num' separates the dataset well (When value is very less income is found to be <=50K etc.)</p>
+<p><b> Observations made:</p></b>
+<p>The parameters which I believe to be most important for predictions based on my observations (age, capital_gain, capital_loss, hours_per_week, education_level) are somewhat same as the most relevant features extracted using <b> 'AdaBoostClassifier' </b>. </p>
+<p>The 'AdaBoostClassifier' predicts 'education_num' to be a more relevant feature than 'education_level' which I feel is fine because on observing the dataset again , I found that 'education_num' separates the dataset well (When value is very less income is found to be <=50K etc.)</p>
   
-<p><i> Selected Final Model in Layman's Term (in brief )</p></i>
+<p><b> Selected Final Model in Layman's Term (in brief )</p></b>
 <p>Logistic Regression model is mainly used in the problems where the target/response set is categorical (binary) in nature. First, the model is trained on the given dataset wherein, it builds a logistic (sigmoid) function. The relationships between the fetaures are constructed and then the features are transformed to build a sigmoid(logistic) function whose values lie between 0 and 1. Further, once the model is fitted to the training set. The logistic function built by the model using the relationships between the features is then used to make the predictions of any unknown class. Simply, the unknown set of features are fed to the model and then the model maps the output to any value between 0 and 1 using the logistic function and thus, classify the unknown class to any of the binary responses/targets. Further, a number of parameters available for the model can be tuned in order to obtain the best possible accuracy. This model is very simple , easy to construct and is less prone to overfitting since it takes all the available features into account while buiding the relationships between them , thus no bias too.</p>
 <p><b><i>Implementation :</b>/i> Complete Code can be found <a href="https://github.com/user-19/ML-Nanodegree-Udacity/tree/master/finding_donors">here.</a></p>.
 </p>
