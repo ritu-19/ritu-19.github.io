@@ -3,108 +3,137 @@ layout: post
 title: QUORA - IDENTIFYING QUESTIONS WITH SAME INTENT
 ---
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-<p><i><b>Project Overview:</i></p></b>
-<p>The goal is to build a binary classification model using a simulated dataset containing a pair of questions and a binary class label stating whether a pair is duplicate or not. In this project, I will be handling this
-1
-problem by applying advanced techniques (Random Forest, K-Means, SVM, XGBoost etc.) to classify whether question pairs are duplicates or not. After applying several models, I’ll be comparing the accuracy obtained with each model.
+<p><b>Project Overview:</p></b>
+<p>The goal is to build a binary classification model using a simulated dataset containing a pair of questions and a binary class label stating whether a pair is duplicate or not. In this project, I will be handling this problem by applying advanced techniques (Random Forest, K-Means, SVM, XGBoost etc.) to classify whether question pairs are duplicates or not. After applying several models, I’ll be comparing the accuracy obtained with each model.
 Doing so will make it easier to find high quality answers to questions resulting in an improved experience for Quora writers, seekers, and readers.<p> 
 <img src="/images/quora_0.png"></img>
+<p> Image Source: [<a href="https://www.google.com/" >Google </a>]</p>
 <p>
 To summarize, this project deals with a problem of identifying of pairs of duplicate questions which is basically a natural language processing problem. To tackle this problem, I have extracted some features from the given dataset like TF-IDF share, number of characters in the question (question length), number of words in the question and word share. After performing feature scaling, I have trained six machinelearning models to help identifying the duplicate questions. The models built are Random Forest, KNN, Logistic Regression, Decision Trees, SVM, XGboost and evaluation method used is k-fold Cross Validation. The models are also tuned using exhaustive grid search, GridSearchCV. Further, I have also shown the relative importance of each feature used in training the model. The final model shows an excellent accuracy (better than the benchmark models (naïve classifier and random forest classifier)) and appears to be generalizable to unseen data as well.
 </p>
 
-<p><b> Metrics: </p></b><p>Our goal is to predict the probability that the questions are duplicates (a number between 0 and 1 for each ID in the test set. The results obtained will be evaluated on the log loss between the predicted values and the ground truth.
-One of the best ways to evaluate the performance of the benchmark model and the solution model is to measure the accuracy using cross validation.
-Cross-validation: It is a technique to evaluate predictive models by partitioning the original sample into a training set to train the model, and a test set to evaluate it. In k-fold cross-validation, the original sample is randomly partitioned into k equal size subsamples. Of the k subsamples, a single subsample is retained as the validation data for testing the model, and the remaining k-1 subsamples are used as training data. The cross-validation process is then repeated k times (the folds), with each of the k subsamples used exactly once as the validation data. The k results from the folds can then be averaged (or otherwise combined) to produce a single estimation. The advantage of this method is that all observations are used for both training and validation, and each observation is used for validation exactly once.
-For handling the stated problem, I will try to minimize the log loss obtained for each model implemented. The model having the least log loss value will be evaluated as the best model in order to tackle this problem.
-Log Loss: It takes into account the uncertainty of your prediction based on how much it varies from the
+<p><b> Metrics: </p></b><p>The goal is to predict the probability that the questions are duplicates (a number between 0 and 1 for each ID in the test set. The results obtained will be evaluated on the log loss between the predicted values and the ground truth.</p>
+<p>One of the best ways to evaluate the performance of the benchmark model and the solution model is to measure the accuracy using cross validation.</p>
+<p><i>Cross-validation:</i></p><p> It is a technique to evaluate predictive models by partitioning the original sample into a training set to train the model, and a test set to evaluate it. In k-fold cross-validation, the original sample is randomly partitioned into k equal size subsamples. Of the k subsamples, a single subsample is retained as the validation data for testing the model, and the remaining k-1 subsamples are used as training data. The cross-validation process is then repeated k times (the folds), with each of the k subsamples used exactly once as the validation data. The k results from the folds can then be averaged (or otherwise combined) to produce a single estimation. The advantage of this method is that all observations are used for both training and validation, and each observation is used for validation exactly once.
+For handling the stated problem, I will try to minimize the log loss obtained for each model implemented. The model having the least log loss value will be evaluated as the best model in order to tackle this problem.</p>
+<p><i>Log Loss:</i></p><p> It takes into account the uncertainty of your prediction based on how much it varies from the
 actual label. This gives us a more nuanced view into the performance of our model. 
 
 </p>
-<p><b>Dataset Used:</b></p>Dataset used: Quora dataset provided on the Kaggle Competition ( ~ 4,00,000 records) : <a href="https://www.kaggle.com/quora/question-pairs-dataset"> Kaggle</a>
-The dataset contains 404351 rows and 6 columns (id, qid1, qid2, question1, question1, is_duplicate) Features:
-• id - the id of a training set question pair – (Numeric)
-• qid1, qid2 - unique ids of each question (only available in train.csv) – (Numeric)
-• question1, question2 - the full text of each question – (String)
-Target Variable:
-• is_duplicate - the target variable, set to 1 if question1 and question2 have essentially the same meaning, and 0 otherwise. – (Numeric)
+<p><b>Dataset Used:</b></p><p> The dataset used is Quora dataset provided on the Kaggle Competition ( ~ 4,00,000 records) : <a href="https://www.kaggle.com/quora/question-pairs-dataset"> Kaggle</a>.</p> 
+<p>The dataset contains 404351 rows and 6 columns (id, qid1, qid2, question1, question1, is_duplicate) </p>
+<p>
+  <ul>
+    
+    <li>Features:</li>
+<ul><li>id - the id of a training set question pair – (Numeric)</li>
+  <li>qid1, qid2 - unique ids of each question (only available in train.csv) – (Numeric)</li>
+  <li>question1, question2 - the full text of each question – (String)</li></ul>
+  <li>Target Variable:</li>
+<ul><li>is_duplicate - the target variable, set to 1 if question1 and question2 have essentially the same meaning, and 0 otherwise. – (Numeric)</li></ul></ul>
 </p>
 
-<p><b>Exploratory Visualization</p></b>
-<p>I have extracted features from the dataset listed below:
-1. length of the questions 2. number of words
-3. word share
-4. tf-idf word share</p>
-<p> Visualizing the features: </p>
+<p><b>Exploratory Visualization:</p></b>
+<p>I have extracted features from the dataset listed below:</p>
+<p>
+  <ul>
+    <li>length of the questions</li> 
+    <li> number of words</li>
+    <li> word share</li>
+    <li>tf-idf word share</li>
+</ul>
+    </p>
+<p> <b>Visualizing the features: </b></p>
 <img src="/images/quora_1.png" />
 
 <img src="/images/quora_2.png" />
-<p>Observation: The above correlation matrix clearly shows that there is a high positive correlation between word_share, TF-IDF_Share and the target (indicating whether a question is duplicate or not) with correlation coefficient of 0.39, 0.32 respectively, which makes sense too.</p>
+<p><b><i>Observation:</b></i></p><p> The above correlation matrix clearly shows that there is a high positive correlation between word_share, TF-IDF_Share and the target (indicating whether a question is duplicate or not) with correlation coefficient of 0.39, 0.32 respectively, which makes sense too.</p>
 
 <img src="/images/quora_3.png" />
 <p>Observation: The above plot clearly shows that most of the questions are of length : 40-50
 </p>
 
 <img src="/images/quora_4.png" />
-<p> Observation: The above plot clearly shows that most of the questions have 7-11 words.</p>
+<p><b><i>Observation:</b></i></p><p>The above plot clearly shows that most of the questions have 7-11 words.</p>
 
 <img src="/images/quora_5.png" / >
-<p>Observation: The above two plots clearly shows that the ratio of both word share and tf-idf word share is higher for duplicate questions than for non-duplicate questions.</p>
+<p><b><i>Observation:</b></i></p><p> The above two plots clearly shows that the ratio of both word share and tf-idf word share is higher for duplicate questions than for non-duplicate questions.</p>
 
 <p></b>Algorithms and Techniques: </p></b>
-<p>Since the given problem is a binary classification problem so I have used several supervised learning algorithms and then afterwards have compared the accuracy of all the implemented algorithms.
-Firstly, I have constructed the following features from the dataset: 1. length of the questions
-2. number of words
-3. word share
-4. tf-idf word share: For finding the tf-idf word share, I have used CountVectorizer and TfidfTransformer from sklearn; which converts a collection of raw documents to a matrix of TF-IDF features.
-Secondly, I have implemented the following supervised algorithms:
-1. Random forest: Random forest is an ensemble learning method. It is applied for both regression and classification problems. In classification problems, it is constructed as an ensemble of decision trees and outputs the class which is the mean of the classes all the trees. It reduces overfitting and thus, gives high accuracy. It automatically learns feature interactions and output feature importance. It is very expensiveand very difficult to interpret. It uses bagging approach which is an approach where you take random samples of data, build learning algorithms and take simple means to find bagging probabilities.
-2. Decision trees: This algorithm uses a tree-like structure to do binary classification at each node and a target prediction is returned at the leaf of the tree. Like random forest, it is also capable of solving both classification and regression tasks and is also capable of learning feature interactions and outputting features importance. It is simple to interpret. This algorithm, however, does not work well when the problem is probabilistic.
-3. Logistic Regression: It is a regression model where the target variable nature is binary ( 0 or 1) . It computes a weighted sum of input features and outputs the logistic of the results. It is simple, fast and easy to interpret. It has low variance, so is less prone to overfitting.
-4. Support Vector Machine: It is an algorithm which analyses both classification and regression tasks. It takes input as a labelled training data and outputs an optimal hyperplane which separated the input labelled data and categorizes new examples.
-5. K Nearest neighbours: It is also used for both regression and classification problems. It generally uses a lazy learning, where the function is only approximated locally and all the final computations are deferred until classification. This model calculates the average of k nearest data points to predict the testing data value. It provides good accuracy and is simple to understand too but is very sensitive to the local structure or noisy data.
-6. Gradient boosting (XGBoost): It can also be applied to both regression and classification problems. This algorithm is similar to bagging only but here, the selection of sample is made more intelligently; subsequently more and more weight is given to classify the observations. It is mostly similar to random – forest algorithm but a prediction score is assigned instead of a binary value to each leaf, and during training one new tree is added to the ensemble and further optimization is done.
-In order to evaluate each algorithm, I have used 20-fold cross validation approach to compare the above supervised algorithms and then selecting the best one.
+<p>Since the given problem is a binary classification problem so I have used several supervised learning algorithms and then afterwards have compared the accuracy of all the implemented algorithms.</p>
+<p>
+Firstly, I have constructed the following features from the dataset:</p>
+<ul>
+  <li> length of the questions</li>
+  <li> number of words</li>
+  <li>word share</li>
+<li> tf-idf word share: For finding the tf-idf word share, I have used CountVectorizer and TfidfTransformer from sklearn; which converts a collection of raw documents to a matrix of TF-IDF features.</li>
+</ul>
+  <p>
+<p>Secondly, I have implemented the following supervised algorithms:</p>
+<p>
+  <ul>
+    <li> <b>Random forest:</b> Random forest is an ensemble learning method. It is applied for both regression and classification problems. In classification problems, it is constructed as an ensemble of decision trees and outputs the class which is the mean of the classes all the trees. It reduces overfitting and thus, gives high accuracy. It automatically learns feature interactions and output feature importance. It is very expensiveand very difficult to interpret. It uses bagging approach which is an approach where you take random samples of data, build learning algorithms and take simple means to find bagging probabilities.</li>
+    <li> <b>Decision trees:</b> This algorithm uses a tree-like structure to do binary classification at each node and a target prediction is returned at the leaf of the tree. Like random forest, it is also capable of solving both classification and regression tasks and is also capable of learning feature interactions and outputting features importance. It is simple to interpret. This algorithm, however, does not work well when the problem is probabilistic.</li>
+    <li> <b>Logistic Regression:</b> It is a regression model where the target variable nature is binary ( 0 or 1) . It computes a weighted sum of input features and outputs the logistic of the results. It is simple, fast and easy to interpret. It has low variance, so is less prone to overfitting.</li>
+    <li><b>Support Vector Machine:</b> It is an algorithm which analyses both classification and regression tasks. It takes input as a labelled training data and outputs an optimal hyperplane which separated the input labelled data and categorizes new examples.</li>
+    
+    <li> <b>K Nearest neighbours: </b>It is also used for both regression and classification problems. It generally uses a lazy learning, where the function is only approximated locally and all the final computations are deferred until classification. This model calculates the average of k nearest data points to predict the testing data value. It provides good accuracy and is simple to understand too but is very sensitive to the local structure or noisy data.</li>
+    <li> <b>Gradient boosting (XGBoost):</b> It can also be applied to both regression and classification problems. This algorithm is similar to bagging only but here, the selection of sample is made more intelligently; subsequently more and more weight is given to classify the observations. It is mostly similar to random – forest algorithm but a prediction score is assigned instead of a binary value to each leaf, and during training one new tree is added to the ensemble and further optimization is done.</li>
+</ul>
+</p>
+<p>
+  In order to evaluate each algorithm, I have used <b>20-fold cross validation</b> approach to compare the above supervised algorithms and then selecting the best one.
+</p>
 </p>
 
-<p><b>Benchmark</p></b>
-<p>Benchmarking here means, a standard solution which already performs well. Thus,
-1. First, I will keep a very naïve model as my benchmarking model: x% change of getting a duplicate question pair, which is , nothing but the percentage of total duplicate pairs in the dataset i.e.,
-(Number of duplicate pairs in dataset)/ (Total number of records in dataset) * 100
-The accuracy obtained for the naïve classifier is: 36.92%
-2. Second, keeping in mind that currently, Quora uses a Random Forest model to identify duplicate questions.
-So, first I will implement Random Forest Model to identify the duplicate questions and then I will use that model as a benchmark model and by applying several different models listed above, I will try to either cross or at-least match the benchmark model’s accuracy.
-The accuracy obtained for Random Forest ( 20-fold Cross Validation): 69.93 %</p>
-
-<p><b> Data Preprocessing </p></b>
-<p>Before the dataset is given to the model for training, pre-processing need to be performed. The following pre-processing of data I have performed:
-1. Feature Extraction: Firstly, I have constructed features from the dataset. The following features have been constructed:
-a. Length of the question (Q1 and Q2) : Extracted using string functions in python
-b. Number of words (Q1 and Q2) : Extracted using string functions in python
-c. Word Share: The value is a normalized value which is calculated as the number of words
+<p><b>Benchmark:</p></b>
+<p>Benchmarking here means, a standard solution which already performs well. Thus,</p>
+<p>
+  <ul>
+ <li><p>First, I will keep a very naïve model as my benchmarking model: x% change of getting a duplicate question pair, which is , nothing but the percentage of total duplicate pairs in the dataset i.e.,</p>
+   <p>(Number of duplicate pairs in dataset)/ (Total number of records in dataset) * 100 </p>
+   <p> The accuracy obtained for the naïve classifier is: 36.92% </p></li>
+    
+<li><p>Second, keeping in mind that currently, Quora uses a Random Forest model to identify duplicate questions.
+So, first I will implement Random Forest Model to identify the duplicate questions and then I will use that model as a benchmark model and by applying several different models listed above, I will try to either cross or at-least match the benchmark model’s accuracy.</li></p>
+<p>The accuracy obtained for Random Forest ( 20-fold Cross Validation): 69.93 %</p>
+</ul>
+<p><b> Data Preprocessing: </p></b>
+<p>Before the dataset is given to the model for training, pre-processing need to be performed. The following pre-processing of data I have performed:</p>
+<p><ul>
+<li><p> Feature Extraction: Firstly, I have constructed features from the dataset. The following features have been constructed:</p></li><p>
+  <ul>
+    <li> Length of the question (Q1 and Q2) : Extracted using string functions in python</li>
+    <li> Number of words (Q1 and Q2) : Extracted using string functions in python </li>
+    <li> Word Share: The value is a normalized value which is calculated as the number of words </li>
 in both question1 and question2 divided by the total number of words in question1 and question2
 word_share = (Number of words in Q1 and Q2) /
-( Number of words in Q1 + Number of words in Q2)
-d. TF-IDF Share: For finding the tf-idf word share, I have used CountVectorizer and TfidfTransformer from sklearn; which converts a collection of raw documents to a matrix of TF-IDF features.
-2. Removing NaN values: Checking if any NaN values are there in the dataset; if exists replace them with zeros.
-3. Normalization of numerical features: Normalization is done to standardize the range of numerical features. It standardizes features by removing the mean and scaling to unit variance. I have used StandardScaler() from sklearn for feature scaling.
+( Number of words in Q1 + Number of words in Q2).
+    <li>TF-IDF Share: For finding the tf-idf word share, I have used CountVectorizer and TfidfTransformer from sklearn; which converts a collection of raw documents to a matrix of TF-IDF features.</li>
+  </ul>
+  
+<li> Removing NaN values: Checking if any NaN values are there in the dataset; if exists replace them with zeros.</li>
+<li> Normalization of numerical features: Normalization is done to standardize the range of numerical features. It standardizes features by removing the mean and scaling to unit variance. I have used StandardScaler() from sklearn for feature scaling.</li></ul>
 </p>
 <p><b> Implementation:</p></b>
-<p>After performing the necessary data preprocessing, I have trained my dataset on six models and I have evaluated each of the model using k-fold cross validation (k=20). The details are given below:
-Random Forest, Decision Tree are trained and are evaluated using k-fold cross validation. The accuracy obtained is 69.93% and 67.75%. Then I trained Logistic Regression model and the accuracy obtained is 66.36%. I trained SVM default parameters (max_iter = 500 to avoid memory issue) without performing grid search, the accuracy obtained is 67.85%. Then, I again trained SVM but this time used exhaustive grid search to find the best parameters. The best parameters obtained are {‘kernel’:’’sigmoid’, ‘C’: ‘0.5’} and the accuracy obtained is 56.82%. Then I trained KNN and performed exhaustive grid search to find the best parameters. The best parameters obtained are : {'n_neighbors': 2, 'weights': 'uniform'} and the accuracy obtained is 70.05%. For XGboost, with default parameters and k-fold cross validation, the accuracy obtained is 70.86% which is better than the benchmark models (naïve classifier: 36.92% and random- forest: 69.93%).
+<p>After performing the necessary data preprocessing, I have trained my dataset on six models and I have evaluated each of the model using k-fold cross validation (k=20). The details are given below:</p>
+<p>
+Random Forest, Decision Tree are trained and are evaluated using k-fold cross validation. The accuracy obtained is 69.93% and 67.75%. Then I trained Logistic Regression model and the accuracy obtained is 66.36%. I trained SVM default parameters (max_iter = 500 to avoid memory issue) without performing grid search, the accuracy obtained is 67.85%. Then, I again trained SVM but this time used exhaustive grid search to find the best parameters. </p>
+<p>The best parameters obtained are {‘kernel’:’’sigmoid’, ‘C’: ‘0.5’} and the accuracy obtained is 56.82%. Then I trained KNN and performed exhaustive grid search to find the best parameters. The best parameters obtained are : {'n_neighbors': 2, 'weights': 'uniform'} and the accuracy obtained is 70.05%. For XGboost, with default parameters and k-fold cross validation, the accuracy obtained is 70.86% which is better than the benchmark models (naïve classifier: 36.92% and random- forest: 69.93%).
 </p>
-<p> <b> Refinement </b></p>
-<p>The XGboost model trained with default parameters and evaluated with k-fold cross validation gave better accuracy than the benchmark models. So, I tried tuning the parameters of XGboost to obtain more accuracy. I performed exhaustive grid search to obtain the best parameters and k-fold cross validation for evaluation. I also played with different parameters ‘eta’, ‘max_depth’ etc. The final accuracy obtained is 72.4%.
+<p> <b> Refinement: </b></p>
+<p>The XGboost model trained with default parameters and evaluated with k-fold cross validation gave better accuracy than the benchmark models. So, I tried tuning the parameters of XGboost to obtain more accuracy. I performed exhaustive grid search to obtain the best parameters and k-fold cross validation for evaluation. I also played with different parameters ‘eta’, ‘max_depth’ etc. The final accuracy obtained is 72.4%.</p><p>
 Accuracy can be improved if more number of features are added to the dataset.</p>
-<p><b> Model Evaluation and Validation </p></b>
+<p><b> Model Evaluation and ValidationL </p></b>
 
 <img src ="/images/quora_6.png"/ >
-<p>The final model I selected to solve the problem is XGBoost (Gradient Boosting). The model is pretty robust because a boosted tree uses many trees to do the training, and unlike random forest, it uses scores in the leaves instead of binary classification.
-The final result obtained is better than both the benchmark models (naïve classifier and random forest classifier). The log-loss obtained is pretty less and the accuracy obtained is 72.4%
-To determine the robustness of the final model selected, the discrepancy between the training and test accuracy scores is evaluated by first randomly splitting the original dataset in the ratio 80:20 (80% training set and 20% testing set) and afterwards, I have trained the same model with different training sizes.
-The learning curves for the training and testing set scores is shown below:
-The curves for the training and testing sets scores converges as the training size increases. Hence, the below curve clearly indicates that the model generalizes well to the unseen data as well; I am confident that my model is valid.
-Also, identifying more than 70% of duplicate questions is pretty good enough for providing a good user experience.</p>
+<p>The final model I selected to solve the problem is XGBoost (Gradient Boosting). The model is pretty robust because a boosted tree uses many trees to do the training, and unlike random forest, it uses scores in the leaves instead of binary classification.</p>
+<p>The final result obtained is better than both the benchmark models (naïve classifier and random forest classifier). The log-loss obtained is pretty less and the accuracy obtained is 72.4%.</p>
+<p>To determine the robustness of the final model selected, the discrepancy between the training and test accuracy scores is evaluated by first randomly splitting the original dataset in the ratio 80:20 (80% training set and 20% testing set) and afterwards, I have trained the same model with different training sizes.</p>
+<p>The learning curves for the training and testing set scores is shown below:</p>
+<p>The curves for the training and testing sets scores converges as the training size increases. Hence, the below curve clearly indicates that the model generalizes well to the unseen data as well; I am confident that my model is valid.</p>
+<p>Also, identifying more than 70% of duplicate questions is pretty good enough for providing a good user experience.</p>
 
 <b><p>Feature Importance </b></p>
 <p>For XGboost , I have obtained the feature importance from the trained model. The below plot show the features along with their respective importance:</p>
