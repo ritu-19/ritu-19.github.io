@@ -23,15 +23,15 @@ title: IMAGE CAPTIONING
 
 </p>
 <p><b> Dataset Used:</p></b>
-<p> The dataset used is Microsoft Common Objects in Context (MS COCO) dataset [<a href="https://github.com/cocodataset/cocoapi" > COCO api </a>]which is a large-scale dataset for scene understanding. The dataset is commonly used to train and benchmark object detection, segmentation, and captioning algorithms.
-</p>
+<p> The dataset used is Microsoft Common Objects in Context (MS COCO) dataset [<a href="https://github.com/cocodataset/cocoapi" > COCO api </a>]which is a large-scale dataset for scene understanding. The dataset is commonly used to train and benchmark object detection, segmentation, and captioning algorithms. The dataset is a very rich labelled dataset and contains a large variety of images wherin each image is associated with five captions. To know more about the dataset, <a href="http://cocodataset.org/#explore">click here. </a>
+</p> 
 <p> <b>Architecture In Brief: </p></b>
-<p> For <i> captioning </i>, the most powerful attributes of CNN-RNN are combined. As we all know, CNNs excel as preserving the spatial information in images and RNNs deal with the sequential data 
+<p> In order to generate a caption of a image, we need the spatial information about the image along with a sequential text description. As we all know, CNNs excel as preserving the spatial information in images and RNNs deal with the sequential data. Thus, for <i> captioning </i>, the most powerful attributes of CNN-RNN are combined.</p><p>End-to-End, the image is being processed by the CNN, which is often called as Encoder and then the processed image is given as innput to the RNN, which is often called as Decoder which will generate the descriptive text for the input image.</p> 
 <img src="/images/caption_1.png" /> 
-<p> Image Source: Udacity Nanaodegree Program </p>
+<p> Image Source:[ <a href="https://in.udacity.com/" > Udacity </a>] </p>
 <p><b> Methodology:</p></b>
 <p>
-Firstly, I have loaded the COCO dataset in batches, I transformed the images and performed preprocessing on the captions as the captions need to be preprocessed and prepped for training. For this,  I have created a model that predicts the next token of a sentence from previous tokens, so we turn the caption associated with any image into a list of tokenized words, before casting it to a PyTorch tensor that we can use to train the network.
+For training, I have used images in COCO dataset as input and have sampled one caption from a set of captions for each image to train on. Further, after loading the COCO dataset in batches, I have transformed the images and performed preprocessing on the captions as the captions need to be preprocessed and prepped for training. For this,  I have created a model that predicts the next token of a sentence from previous tokens, so we turn the caption associated with any image into a list of tokenized words, before casting it to a PyTorch tensor that we can use to train the network.
 </p>
 <p> After all the preprocessing, I have defined my CNN-RNN architecture </p>
 <p> I have used a ResNet pre-trained model for the encoder. ResNet stands for Residual Networks. More specifically, I have used resnet-50 which is a 50 layer residual network. In order to get more glimpse about the ResNet architecture, follow this paper : https://arxiv.org/pdf/1512.03385.pdf . It has been proved that training residual networks is easier than training a simple deep convolutional neural networks and also the problem of degrading accuracy is resolved in case of ResNets.
