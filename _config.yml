@@ -21,7 +21,7 @@ footer-links:
   email: rituyadav0153@gmail.com
   facebook:
   flickr:
-  github: user-19
+  github: ritu-19
   instagram:
   linkedin:
   pinterest:
@@ -47,7 +47,7 @@ url:
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
-baseurl: "/user-19.github.io"
+baseurl: "/ritu-19.github.io"
 
 #
 # !! You don't need to change any of the configuration flags below !!
