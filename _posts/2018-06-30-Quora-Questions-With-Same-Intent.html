@@ -8,6 +8,22 @@ title: QUORA - IDENTIFYING QUESTIONS WITH SAME INTENT
 Doing so will make it easier to find high quality answers to questions resulting in an improved experience for Quora writers, seekers, and readers.<p> 
 <img src="/images/quora_0.png"></img>
 <p> Image Source: [<a href="https://www.google.com/" >Google </a>]</p>
+
+
+
+<p>
+
+
+
+
+
+
+
+
+
+
+
+</p>
 <p>
 To summarize, this project deals with a problem of identifying of pairs of duplicate questions which is basically a natural language processing problem. To tackle this problem, I have extracted some features from the given dataset like TF-IDF share, number of characters in the question (question length), number of words in the question and word share. After performing feature scaling, I have trained six machinelearning models to help identifying the duplicate questions. The models built are Random Forest, KNN, Logistic Regression, Decision Trees, SVM, XGboost and evaluation method used is k-fold Cross Validation. The models are also tuned using exhaustive grid search, GridSearchCV. Further, I have also shown the relative importance of each feature used in training the model. The final model shows an excellent accuracy (better than the benchmark models (naïve classifier and random forest classifier)) and appears to be generalizable to unseen data as well.
 </p>
