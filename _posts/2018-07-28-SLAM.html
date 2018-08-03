@@ -21,3 +21,33 @@ title: SLAM
 
 
 </p>
+<p>
+To summarize, for simultaneous localization and mapping (SLAM), information is gathered from a robot's sensors and motions over time, and then use that gathered information about measurements and motion to re-construct a map of the world.
+</p>
+<p>
+  <i>Robot Creation and Movement while sensing the landmarks:</i>
+  </p>
+<p> First, I have created a robot and allowed it to move around a 2D grid world.</p>
+<p> Then, I have defined a sense function for the robot that allows it to sense landmarks in a given world so that the robot keeps track of the  different landmarks that it sees in a 2D grid world .</p>
+<p><i>Note: </i>The robot motion and sensors have some uncertainty associated with them.</p>
+<p>To create the robot, I have used following parameters:</p>
+<ul>
+  <li> size of world = 10.0  </li>
+  <li>range at which landmarks are sensed = 5.0   </li>
+  <li>noise in robot motion = 0.2    </li>
+  <li>noise in the measurements = 0.2     </li>
+</ul>
+</p>
+<p>
+  <i> Visualization:</i>
+<p> The below image shows the robot's initial position in the grid world.</p>
+<img src="/images/slam_1.png" />
+<p> The below image shows the robot's position in the grid world after movement.</p>
+<img src="/images/slam_2.png" />
+<p> The below image shows the positions of landmarks created in the grid world.</p>
+<img src="/images/slam_3.png" />
+</p>
+<p><i>Data:</i></p>
+To perform SLAM, a series of robot sensor measurements and motions is collected over a defined period of time.This data is used everytime to re-construct the map of the world with the robot and landmark locations.
+</p>
+<p><i>Omega and Xi </i></p>
